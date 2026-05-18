@@ -46,6 +46,14 @@ app.post("/login", (req, res) => {
     });
 });
 
+// Logs viewer route
+app.get("/logs", (req, res) => {
+    fs.readFile(LOG_FILE, "utf8", (err, data) => {
+        if (err) return res.send("No logs yet");
+        res.type("text/plain").send(data);
+    });
+});
+
 // Hosting-safe port
 const PORT = process.env.PORT || 3000;
 
