@@ -6,10 +6,13 @@ const path = require("path");
 const app = express();
 
 // Middleware
-app.use(cors());
+app.use(cors({
+    origin: "*"
+}));
+
 app.use(express.json());
 
-// Root route (fix for Render test)
+// Root route
 app.get("/", (req, res) => {
     res.send("Server is running");
 });
