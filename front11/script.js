@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:3000";
+const API_URL = "https://login-system-4-6p9u.onrender.com/";
 
 async function login() {
     const username = document.getElementById("username").value;
